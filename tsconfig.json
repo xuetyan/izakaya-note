@@ -4,6 +4,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "isolatedModules": false,
+    "module": "es2022",
     "paths": {
       "@/*": ["./src/*"]
     }
