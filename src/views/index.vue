@@ -12,32 +12,23 @@ const excelData = {
   header: null,
   results: null
 }
-// const readXlsx = function (file: any){
-//   let jsonData = {}
-//   let reader = new FileReader()
-//   // reader.readAsArrayBuffer(file)
-//   reader.onload =  function (e) {
-//     console.log(e, '*');
 
-//   }
-// }
-
-const readXlsx = function(e) {
+const readXlsx = function(e: any) {
   const files = e.target.files
   const rawFile = files[0] // only use files[0]
   if (!rawFile) return
   upload(rawFile)
 }
 
-const upload = function(rawFile) {
+const upload = function(rawFile: any) {
   readerData(rawFile)
 }
 
-const readerData = function(rawFile) {
-  return new Promise((resolve, reject) => {
+const readerData = function(rawFile: Blob) {
+  return new Promise<void>((resolve, reject) => {
     const reader = new FileReader()
     reader.onload = e => {
-      const data = e.target.result
+      const data = e?.target?.result
       const workbook = XLSX.read(data, { type: 'array' })
       const firstSheetName = workbook.SheetNames[0]
       const worksheet = workbook.Sheets[firstSheetName]
@@ -50,12 +41,12 @@ const readerData = function(rawFile) {
   })
 }
 
-const generateData = function({ header, results }) {
+const generateData = function({ header, results }: any) {
   excelData.header = header
   excelData.results = results
 }
 
-const getHeaderRow = function(sheet) {
+const getHeaderRow = function(sheet: XLSX.WorkSheet) {
   const headers = []
   const range = XLSX.utils.decode_range(sheet['!ref'])
   let C
@@ -71,9 +62,6 @@ const getHeaderRow = function(sheet) {
   return headers
 }
 
-
-
-
 </script>
 
 <style scoped>
@@ -82,5 +70,6 @@ const getHeaderRow = function(sheet) {
   height: 40px;
   line-height: 40px;
   background-color: pink;
+  margin-bottom: 50px;
 }
 </style>
