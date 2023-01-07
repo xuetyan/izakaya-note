@@ -1,4 +1,4 @@
- export type TableDataInterface {
+ export interface TableDataInterface {
     mealName: string,
     tagNum: number,
     like: string,

@@ -46,7 +46,7 @@ const generateData = function({ header, results }: any) {
   excelData.results = results
 }
 
-const getHeaderRow = function(sheet: XLSX.WorkSheet) {
+const getHeaderRow = function(sheet: any) {
   const headers = []
   const range = XLSX.utils.decode_range(sheet['!ref'])
   let C
