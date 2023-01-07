@@ -4,9 +4,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "isolatedModules": false,
-    "module": "es2022",
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["*", "src/*"]
     }
   },
   "references": [

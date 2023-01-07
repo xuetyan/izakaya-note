@@ -13,16 +13,16 @@
 
 <script lang="ts" setup>
 import { ref, reactive  } from 'vue'
-import { custom_rare_header, custom_rare_results } from '@/assets/data/rareCustom.js'
+import { custom_rare_header, custom_rare_results } from '@/src/assets/data/rareCustom.js'
 
 const rareName = ref('')
 const customRareHeader = reactive(custom_rare_header)
 const customRareResults = reactive(custom_rare_results)
 
-const rareList = {}
+const rareList: { [ propName: string ]: any }= {}
 
 for (const head of customRareHeader) {
-  rareList[head] = customRareResults.map(m => m[head])
+  rareList[head] = customRareResults.map((m: { [x: string]: any }) => m[head])
 }
 
 console.log(rareList)
