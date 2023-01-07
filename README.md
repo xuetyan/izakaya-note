@@ -1,3 +1,7 @@
+# 前言
+
+#### 初学vue3, 尝试写了这个 东方夜去食堂 稀客查询表格
+
 # main
 
 This template should help get you started developing with Vue 3 in Vite.
