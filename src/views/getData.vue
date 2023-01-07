@@ -71,5 +71,6 @@ const getHeaderRow = function(sheet: XLSX.WorkSheet) {
   line-height: 40px;
   background-color: pink;
   margin-bottom: 50px;
+  text-align: center;
 }
 </style>
