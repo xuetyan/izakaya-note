@@ -2,7 +2,7 @@
   <div class="options">
     <div class="select-box">
       <div class="label">{{ '稀客' + customRareHeader[0] }} {{ '(可搜索)' }}</div>
-      <el-select v-model="rareName" filterable :placeholder="`选择${customRareHeader[0]}`" size="large" @change="selectRareCustom">
+      <el-select v-model="rareName" filterable :placeholder="`选择稀客${customRareHeader[0]}`" size="large" @change="selectRareCustom">
         <el-option
           v-for="item in rareList[customRareHeader[0]]||[]"
           :key="item"
