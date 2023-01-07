@@ -6,6 +6,8 @@
 直接运行start.bat
 之后直接使用chrome浏览器打开网页
 
+bai
+
 之后可能会写 普客的表格
 maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  
 
