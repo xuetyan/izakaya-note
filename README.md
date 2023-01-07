@@ -6,7 +6,7 @@
 直接运行start.bat
 之后直接使用chrome浏览器打开网页
 
-bai
+[百度网盘](https://pan.baidu.com/s/1l4jweStcOMcvq_DzW0fURw?pwd=2mt0)
 
 之后可能会写 普客的表格
 maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  
