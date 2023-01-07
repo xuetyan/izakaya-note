@@ -1,5 +1,5 @@
 <template>
-  <div class="get-xlsx">
+  <div v-if="false" class="get-xlsx">
     <input ref="excel-upload-input" class="excel-upload-input" type="file" accept=".xlsx, .xls" @change="readXlsx">
   </div>
   <RouterView />

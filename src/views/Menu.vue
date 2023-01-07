@@ -20,7 +20,7 @@
   </div>
 
   <div class="detail-table-box">
-    <el-table :data="tableData" stripe fit highlight-current-row height="66vh">
+    <el-table :data="tableData" stripe fit highlight-current-row height="80vh">
       <el-table-column label="菜名" prop="mealName"></el-table-column>
       <el-table-column label="价格" prop="price" sortable></el-table-column>
       <el-table-column label="tag数(喜爱tag - 厌恶tag)" prop="tagNum" sortable></el-table-column>
