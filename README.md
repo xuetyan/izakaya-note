@@ -10,8 +10,8 @@
 
 [百度网盘](https://pan.baidu.com/s/1bIDKmVytUH7GGNymHFWapQ?pwd=lca1)
 
-~~ 之后可能会写 普客的表格 ~~
-~~ maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe ~~
+~~之后可能会写 普客的表格~~
+~~maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe  maybe~~
 
 # main
 
