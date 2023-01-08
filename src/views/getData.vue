@@ -1,4 +1,8 @@
 <template>
+  <div class="tabs">
+    <div v-for="(tab, index) in tabs" :key="tab.url" class="tab" :class="{active: tabIndex === index}" @click="switchTab(tab, index)">{{ tab.name }}</div>
+  </div>
+
   <div v-if="false" class="get-xlsx">
     <input ref="excel-upload-input" class="excel-upload-input" type="file" accept=".xlsx, .xls" @change="readXlsx">
   </div>
@@ -6,7 +10,19 @@
 </template>
 
 <script lang="ts" setup name="Menu">
+import { ref, reactive  } from 'vue'
+import { useRouter } from 'vue-router'
 import * as XLSX from 'xlsx'
+import type { routeTab } from '@/interface/menu.ts'
+
+const router = useRouter()
+
+const tabs: Array<typeof routeTab> = [{name: '稀客', url: '/rare_custom'}, {name: '普客', url: '/normal_custom'}]
+let tabIndex = ref(0)
+const switchTab = function(tab: typeof routeTab, index: number) {
+  tabIndex.value = index
+  router.push({ path: tab.url })
+}
 
 const excelData = {
   header: null,
@@ -65,6 +81,36 @@ const getHeaderRow = function(sheet: any) {
 </script>
 
 <style scoped>
+.tabs {
+  background-color: rgb(217, 217, 238);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  line-height: 44px;
+  margin: 12px 0 6px;
+}
+
+.tab {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  text-align: center;
+  line-height: 30px;
+  margin: 0 10px;
+  font-size: 16px;
+  color: rgba(90, 90, 150, 0.8);
+  background-color: rgba(255, 145, 183, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition-duration: 280ms;
+}
+
+.tab.active {
+  width: 60px;
+  border-radius: 50px;
+}
+
 .get-xlsx {
   width: 100%;
   height: 40px;

@@ -1,48 +1,52 @@
 <template>
-  <div class="options">
-    <div class="select-box">
-      <div class="label">{{ '稀客' + customRareHeader[0] }} {{ '(可搜索)' }}</div>
-      <el-select v-model="rareName" filterable :placeholder="`选择稀客${customRareHeader[0]}`" size="large" @change="selectRareCustom">
-        <el-option
-          v-for="item in rareList[customRareHeader[0]]||[]"
-          :key="item"
-          :label="item"
-          :value="item"
-        />
-      </el-select>
+  <div class="main-content">
+    <div>
+      <div class="options">
+        <div class="select-box">
+          <div class="label">{{ '稀客' + customRareHeader[0] }} {{ '(可搜索)' }}</div>
+          <el-select v-model="rareName" filterable clearable placeholder="选择稀客" size="large" @change="selectRareCustom">
+            <el-option
+              v-for="item in rareList[customRareHeader[0]]||[]"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </el-select>
+        </div>
+      </div>
+      <div class="custom_rare_info-box">
+        <div v-for="(item, index) in Object.keys(customRareInfo)" :key="index">
+          <span>{{ item }}</span>
+          <span>{{ customRareInfo[item] }}</span>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="custom_rare_info-box">
-    <div v-for="(item, index) in Object.keys(customRareInfo)" :key="index">
-      <span>{{ item }}</span>
-      <span>{{ customRareInfo[item] }}</span>
+  
+    <div class="detail-table-box">
+      <el-table :data="tableData" stripe fit highlight-current-row height="100%">
+        <el-table-column label="菜名" prop="mealName"></el-table-column>
+        <el-table-column label="价格" prop="price" sortable></el-table-column>
+        <el-table-column label="tag数(喜爱tag - 厌恶tag)" prop="tagNum" sortable></el-table-column>
+        <el-table-column label="喜爱tag数" prop="like" sortable></el-table-column>
+        <el-table-column label="厌恶tag数" prop="hate" sortable></el-table-column>
+        <el-table-column label="食材" prop="material"></el-table-column>
+        <el-table-column label="厨具" prop="cookware"></el-table-column>
+      </el-table>
     </div>
-  </div>
-
-  <div class="detail-table-box">
-    <el-table :data="tableData" stripe fit highlight-current-row height="80vh">
-      <el-table-column label="菜名" prop="mealName"></el-table-column>
-      <el-table-column label="价格" prop="price" sortable></el-table-column>
-      <el-table-column label="tag数(喜爱tag - 厌恶tag)" prop="tagNum" sortable></el-table-column>
-      <el-table-column label="喜爱tag数" prop="like" sortable></el-table-column>
-      <el-table-column label="厌恶tag数" prop="hate" sortable></el-table-column>
-      <el-table-column label="食材" prop="material"></el-table-column>
-      <el-table-column label="厨具" prop="cookware"></el-table-column>
-    </el-table>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { TableDataInterface } from '@/interface/menu.ts'
-
 import { ref, reactive  } from 'vue'
+
+import type { TableDataInterface_rareCostom } from '@/interface/menu.ts'
 import { custom_rare_header, custom_rare_results } from '@/assets/data/rareCustom.js'
 import { meal_header, meal_results } from '@/assets/data/meal.js'
 
 // 选择的稀客
 const rareName = ref('')
 const rareDetail = reactive({})
-let tableData = reactive<typeof TableDataInterface>([])
+let tableData = reactive<typeof TableDataInterface_rareCostom[]>([])
 let customRareInfo = reactive<{[x: string]: string}>({})
 // 稀客 喜爱的料理 tag
 let customRareInfo_like = reactive<string[]>([])
@@ -72,7 +76,7 @@ const getMeals = function(customRareInfo_like: string[], customRareInfo_hate: st
     const like: number = customRareInfo_like.reduce((init: number, cur:string) => (init += (mealTags.some((s: string) => s === cur)? 1: 0)), 0)
     if(like > 0) {
       const hate: number = customRareInfo_hate.reduce((init: number, cur:string) => (init += (mealTags.some((s: string) => s === cur)? 1: 0)), 0)
-      let tableDataItem = reactive<typeof TableDataInterface>({
+      let tableDataItem = reactive<typeof TableDataInterface_rareCostom>({
         mealName: meal['名称'],
         tagNum: like - hate,
         like: like,
@@ -86,13 +90,18 @@ const getMeals = function(customRareInfo_like: string[], customRareInfo_hate: st
   }
 }
 
-const likeTagNum = function(): number {
-  return 0
-}
-
 </script>
 
 <style scoped>
+.main-content {
+  height: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+}
+.main-content .detail-table-box {
+  height: 0;
+  flex-grow: 1;
+}
 .options {
   display: flex;
   align-items: center;

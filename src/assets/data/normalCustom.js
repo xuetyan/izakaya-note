@@ -1,11 +1,26 @@
-export const normal_rare_header = [
+export const zones = [
+    "妖怪兽道",
+    "人间之里",
+    "博丽神社",
+    "红魔馆",
+    "迷途竹林",
+    "魔法森林",
+    "妖怪之山",
+    "旧地狱",
+    "地灵殿",
+    "命莲寺",
+    "神灵庙",
+    "爱丽丝奖励符卡召唤",
+]
+
+export const normal_custom_header = [
     "名称",
     "喜好·料理",
     "喜好·酒水",
     "出没地点"
 ]
 
-export const normal_rare_results = [
+export const normal_custom_results = [
     {
         "名称": "妖怪兔",
         "喜好·料理": "招牌、家常、甜、咸、鲜、果味、凉爽、力量涌现、流行·喜爱",
