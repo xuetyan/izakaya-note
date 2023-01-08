@@ -2,9 +2,7 @@
 
 #### 初学vue3, 尝试写了这个 东方夜去食堂 稀客查询表格
 
-打完包后将 dist server.js start.bat 放在同一目录下
-
-直接运行start.bat
+直接打开index.html即可
 
 之后直接使用chrome浏览器打开网页
 
