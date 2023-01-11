@@ -4,8 +4,6 @@
 
 直接打开index.html即可
 
-之后直接使用chrome浏览器打开网页
-
 [百度网盘](https://pan.baidu.com/s/1DuSCo-5adZNG4LwsNDPuXQ?pwd=9ohp)
 
 ~~之后可能会写 普客的表格~~
