@@ -3,9 +3,16 @@
     <div v-for="(tab, index) in tabs" :key="tab.url" class="tab" :class="{active: tabIndex === index}" @click="switchTab(tab, index)">{{ tab.name }}</div>
   </div>
 
-  <div v-if="false" class="get-xlsx">
+  <div v-if="true" class="get-xlsx">
     <input ref="excel-upload-input" class="excel-upload-input" type="file" accept=".xlsx, .xls" @change="readXlsx">
+    <span>选择文件名(选择和excel文件名称语义相近的): </span>
+    <el-select v-model="fileName">
+      <el-option value="meal">菜单</el-option>
+      <el-option value="normalCustom">普客</el-option>
+      <el-option value="rareCustom">稀客</el-option>
+    </el-select>
   </div>
+
   <RouterView />
 </template>
 
@@ -13,12 +20,15 @@
 import { ref, reactive  } from 'vue'
 import { useRouter } from 'vue-router'
 import * as XLSX from 'xlsx'
+import { ElMessage } from 'element-plus'
 import type { routeTab } from '@/interface/menu.ts'
+import { getExcelDataFile } from '@/api/excel.js'
 
 const router = useRouter()
 
 const tabs: Array<typeof routeTab> = [{name: '稀客', url: '/rare_custom'}, {name: '普客', url: '/normal_custom'}]
 let tabIndex = ref(0)
+let fileName = ref('')
 const switchTab = function(tab: typeof routeTab, index: number) {
   tabIndex.value = index
   router.push({ path: tab.url })
@@ -60,6 +70,12 @@ const readerData = function(rawFile: Blob) {
 const generateData = function({ header, results }: any) {
   excelData.header = header
   excelData.results = results
+  // getExcelDataFile(JSON.parse(decodeURIComponent(window.atob(excelData))))
+  if (!fileName.value) {
+    ElMessage({type: 'warning',message: '请先选择文件名' })
+  } else {
+    getExcelDataFile(JSON.stringify({ excelData, fileName: fileName.value }))
+  }
 }
 
 const getHeaderRow = function(sheet: any) {

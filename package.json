@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode development",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-legacy": "^3.0.1",
+    "axios": "^1.2.2",
     "element-plus": "^2.2.28",
     "pinia": "^2.0.28",
     "vite-plugin-vue-setup-extend": "^0.4.0",

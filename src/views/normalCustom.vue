@@ -27,10 +27,10 @@
       <el-table :data="tableData" stripe fit highlight-current-row height="100%">
         <el-table-column label="菜名" prop="mealName"></el-table-column>
         <el-table-column label="价格" prop="price" sortable></el-table-column>
-        <el-table-column label="满足4Tag" prop="haveFour" sortable></el-table-column>
-        <el-table-column label="满足3Tag" prop="haveThree" sortable></el-table-column>
+        <el-table-column label="满足4Tag(人数)" prop="haveFour" sortable></el-table-column>
+        <el-table-column label="满足3Tag(人数)" prop="haveThree" sortable></el-table-column>
         <el-table-column label="满足2Tag(默认排序)" prop="haveTwo" sortable></el-table-column>
-        <el-table-column label="满足1Tag" prop="haveOne" sortable></el-table-column>
+        <el-table-column label="满足1Tag(人数)" prop="haveOne" sortable></el-table-column>
         <el-table-column label="tag" prop="like"></el-table-column>
         <el-table-column label="反向tag" prop="hate"></el-table-column>
         <el-table-column label="厨具" prop="cookware"></el-table-column>
@@ -40,20 +40,20 @@
 
 
   </template>
-  
+
   <script lang="ts" setup>
   import { ref, reactive  } from 'vue'
-  
+
   import type { TableDataInterface_normalCostom } from '@/interface/menu.ts'
   import { zones, normal_custom_header, normal_custom_results } from '@/assets/data/normalCustom.js'
   import { meal_header, meal_results } from '@/assets/data/meal.js'
-  
+
   // 选择的地点
   const zoneName = ref('')
   let tableData = reactive<typeof TableDataInterface_normalCostom[]>([])
   // 当前地点 普客列表
   let currentZoneCustom = reactive<string[]>([])
-  
+
   // 地点列表
   const zoneList = reactive(zones)
   // 普客列表
@@ -104,9 +104,9 @@
     return TableData
   }
 
-  
+
   </script>
-  
+
   <style scoped>
   .main-content {
     height: calc(100% - 80px);
@@ -124,9 +124,7 @@
     justify-content: space-around;
     padding: 0 20px;
   }
-  .select-box {
-    margin: 8px;
-  }
+
   .select-box .label {
     margin-bottom: 6px;
     width: 100%;
@@ -168,4 +166,3 @@
   font-size: 16px;
 }
   </style>
-  

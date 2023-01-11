@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-  
+
     <div class="detail-table-box">
       <el-table :data="tableData" stripe fit highlight-current-row height="100%">
         <el-table-column label="菜名" prop="mealName"></el-table-column>
@@ -108,14 +108,12 @@ const getMeals = function(customRareInfo_like: string[], customRareInfo_hate: st
   justify-content: space-around;
   padding: 0 20px;
 }
-.select-box {
-  margin: 8px;
-}
+
 .select-box .label {
   margin-bottom: 6px;
   width: 100%;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: rgb(230, 110, 134);
 }
@@ -138,10 +136,10 @@ const getMeals = function(customRareInfo_like: string[], customRareInfo_hate: st
 }
 .custom_rare_info-box div span:first-child {
   color: #333;
-  font-size: 18px;
+  font-size: 16px;
 }
 .custom_rare_info-box div span:last-child {
   color: rgb(46, 138, 165);
-  font-size: 18px;
+  font-size: 16px;
 }
 </style>

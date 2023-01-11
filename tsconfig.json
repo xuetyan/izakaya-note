@@ -10,7 +10,8 @@
     "moduleResolution": "node",
     "paths": {
       "@/*": ["*", "src/*"]
-    }
+    },
+    "types": [ "vite/client" ]
   },
   "references": [
     {
